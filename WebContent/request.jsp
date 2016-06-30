@@ -28,6 +28,6 @@
 	response.addHeader("u r sb", "sure");
 	response.addCookie(new Cookie("hehe","0.0"));
 %>
-<%@include file="index.jsp" %>>
+<%@include file="index.jsp" %>
 </body>
 </html>

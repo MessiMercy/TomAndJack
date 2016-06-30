@@ -45,7 +45,6 @@ public class DbDao {
 		this.url = url;
 	}
 
-	// 得到数据库连接
 	public Connection getConnection() {
 		try {
 			if (conn == null) {
@@ -59,7 +58,6 @@ public class DbDao {
 		return this.conn;
 	}
 
-	// 插入记录
 	public boolean insertOne(String sql, Object... args) throws SQLException {
 		boolean flag = false;
 		PreparedStatement st = getConnection().prepareStatement(sql);
@@ -72,7 +70,6 @@ public class DbDao {
 		return flag;
 	}
 
-	// 查询记录
 	public ResultSet query(String sql, Object... object) {
 		ResultSet set = null;
 		try {
@@ -83,13 +80,10 @@ public class DbDao {
 			set = st.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			closeConn();
 		}
 		return set;
 	}
 
-	// 关闭连接
 	public void closeConn() {
 		try {
 			if (conn != null && !conn.isClosed()) {

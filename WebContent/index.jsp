@@ -4,17 +4,18 @@
 <%@page import="java.sql.Connection"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib uri="http://tomcat.apache.org/jsp2-example-taglib" prefix="myTag" %>
+<%@page errorPage="error.jsp" %>
+<%@taglib uri="http://tomcat.apache.org/example-taglib" prefix="mytag" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>MessiMercy</title>
 </head>
 <body>
-<div><a href="http://www.baidu.com" target="_blank"><myTag:MySimpleTag/></a></div>
-<div><a href="http://www.baidu.com" target="_blank">
-<myTag:queryTag query = "select * from post" url=<%=application.getInitParameter("url")%>
- driver=<%=application.getInitParameter("driver") %>/></a></div>
+<div><a href="http://www.baidu.com" target="_blank"></a></div>
+<div><a href="http://www.baidu.com" target="_blank"></a></div>
+<mytag:helloworld></mytag:helloworld>
+<mytag:queryTag query="select * from post limit 2;" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/test"></mytag:queryTag>
 <%out.println(new java.util.Date());%>
 <%!
 public int count =0;
@@ -26,7 +27,6 @@ public String inf()
 <p>
 <%out.println(count++); %>
 <%=inf() %>
-</p>
 <%
 String driver = application.getInitParameter("driver");
 String url = application.getInitParameter("url");
@@ -35,6 +35,7 @@ Connection conn=DriverManager.getConnection(url);
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery("select * from post limit 2");
 %>
+</p>
 <table bgcolor = "#123456" border="1" width="300">
 	<%while(rs.next()){ %>
 	<tr>

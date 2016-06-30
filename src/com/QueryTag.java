@@ -6,22 +6,61 @@ import java.sql.SQLException;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-public class QueryTag extends SimpleTagSupport implements DynamicAttributes {
+public class QueryTag extends SimpleTagSupport {
 
 	private String url;
 	private String driver;
-	private DbDao dao;
-	ResultSet set = null;
 
-	public void setDynamicAttribute(String query, String arg1, Object arg2) throws JspException {
-		dao = new DbDao(driver, url);
-		set = dao.query(query);
+	public String getUrl() {
+		return url;
 	}
 
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getDriver() {
+		return driver;
+	}
+
+	public void setDriver(String driver) {
+		this.driver = driver;
+	}
+
+	public DbDao getDao() {
+		return dao;
+	}
+
+	public void setDao(DbDao dao) {
+		this.dao = dao;
+	}
+
+	public ResultSet getSet() {
+		return set;
+	}
+
+	public void setSet(ResultSet set) {
+		this.set = set;
+	}
+
+	private DbDao dao;
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
+	private String query;
+	ResultSet set = null;
+
 	public void doTag() throws JspException, IOException {
+		dao = new DbDao(driver, url);
+		set = dao.query(query);
 		JspWriter out = getJspContext().getOut();
 		out.println("<div>");
 		try {
@@ -37,6 +76,8 @@ public class QueryTag extends SimpleTagSupport implements DynamicAttributes {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			dao.closeConn();
 		}
 		out.println("</div>");
 	}
