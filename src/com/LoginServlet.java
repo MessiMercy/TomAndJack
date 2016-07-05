@@ -29,11 +29,11 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("密码： " + pw);
 		System.out.println("--------------");
 		if (userName.contains("liu") && pw.contains("920923")) {
-			req.setAttribute("isLogin", "true");
+			req.getServletContext().setAttribute("isLogin", "true");
 			req.getServletContext().setAttribute("userName", userName);
-			resp.sendRedirect("TomAndJack/index.jsp");
+			resp.sendRedirect("index.jsp");
 		} else {
-			resp.sendRedirect("TomAndJack/login.jsp");
+			resp.sendRedirect("login.jsp");
 		}
 	}
 
