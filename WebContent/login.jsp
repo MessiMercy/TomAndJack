@@ -3,7 +3,7 @@
 <html>
 	<title>Messi</title>	
 	<h1>这是一个登录页面</h1>
-	<form  id = "login" method = "post" action="request.jsp">
+	<form  id = "login" method = "post" action="/TomAndJack/login">
 		<div>
 			<label>账号：</label>
 			<input type="text" name = "userName" id="userName" />

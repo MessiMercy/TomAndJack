@@ -36,6 +36,7 @@ Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery("select * from post limit 2");
 %>
 </p>
+<div>欢迎你<%=pageContext.getAttribute("userName")%></div>
 <table bgcolor = "#123456" border="1" width="300">
 	<%while(rs.next()){ %>
 	<tr>
