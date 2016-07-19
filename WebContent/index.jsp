@@ -12,8 +12,8 @@
 <title>MessiMercy</title>
 </head>
 <body>
-<div><a href="http://www.baidu.com" target="_blank"></a></div>
-<div><a href="http://www.baidu.com" target="_blank"></a></div>
+<div><a href="http://www.baidu.com" target="_blank">百度</a></div>
+<div><a href="http://www.google.com" target="_blank">Google</a></div>
 <mytag:helloworld></mytag:helloworld>
 <mytag:queryTag query="select * from post limit 2;" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/test"></mytag:queryTag>
 <%out.println(new java.util.Date());%>
